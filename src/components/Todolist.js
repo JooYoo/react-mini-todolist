@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Todo from "./Todo";
+import TodoForm from "./TodoForm";
 
 function Todolist() {
   const initTodos = [
@@ -18,8 +19,14 @@ function Todolist() {
   ];
   const [todos, setTodos] = useState(initTodos);
 
+  const addTodo = (text) => {
+    const newTodos = [...todos, { text }];
+    setTodos(newTodos);
+  };
+
   return (
     <div>
+      <TodoForm addTodo={addTodo} />
       {todos.map((todo, index) => (
         <Todo key={index} index={index} todo={todo} />
       ))}

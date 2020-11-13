@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function TodoForm() {
+function TodoForm(props) {
   const initInputVal = "";
   const [inputVal, setInputVal] = useState(initInputVal);
 
@@ -9,7 +9,8 @@ function TodoForm() {
     e.preventDefault();
     // prevent empty input
     if (!inputVal) return;
-    //TODO: addTodo()
+    // add new Todo
+    props.addTodo(inputVal);
     // clear input textbox
     setInputVal("");
   };
@@ -23,7 +24,7 @@ function TodoForm() {
       <input
         type="text"
         value={inputVal}
-        onChange={(e) => setInputValHandler}
+        onChange={(e) => setInputValHandler(e)}
       />
     </form>
   );
