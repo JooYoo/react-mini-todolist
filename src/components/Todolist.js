@@ -24,11 +24,22 @@ function Todolist() {
     setTodos(newTodos);
   };
 
+  const completeTodo = (index) => {
+    const newTodos = [...todos];
+    newTodos[index].isCompleted = !newTodos[index].isCompleted;
+    setTodos(newTodos);
+  };
+
   return (
     <div>
       <TodoForm addTodo={addTodo} />
       {todos.map((todo, index) => (
-        <Todo key={index} index={index} todo={todo} />
+        <Todo
+          key={index}
+          index={index}
+          todo={todo}
+          completeTodo={completeTodo}
+        />
       ))}
     </div>
   );
